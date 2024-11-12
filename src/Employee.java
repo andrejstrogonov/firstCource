@@ -5,10 +5,6 @@ public class Employee {
     private String surname;
     private String patronimic;
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
     private double salary;
     private int department;
     private static int id;
@@ -50,6 +46,9 @@ public class Employee {
 
     public void setDepartment(int department) {
         this.department = department;
+    }
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     @Override
