@@ -10,6 +10,25 @@ public class Employee {
     private int department;
     private static int id;
 
+    public String nameAndSurnameAndPatronimic() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronimic='" + patronimic + '}';
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronimic='" + patronimic + '\'' +
+                ", count=" + count +
+                ", salary=" + salary +
+                ", department=" + department +
+                '}';
+    }
+
     // Constructor
     public Employee(String name, String surname, String patronimic,double salary, int department) {
         this.name = name;
