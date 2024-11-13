@@ -4,11 +4,27 @@ public class Employee {
     private String name;
     private String surname;
     private String patronimic;
-    private int count = 0;
+    private static int count = 0;
 
     private double salary;
     private int department;
     private static int id;
+    public static int sumSalaryPerMonth(){
+        double sum = 0;
+        for (Employee employee : employee.) {
+            sum += employee.salary;
+        }
+        return (int) sum;
+    }
+    public static int minSalaryEmployee(){
+        return 0;
+    }
+    public static int maxSalaryEmployee(){
+        return 0;
+    }
+    public static double averageSalaryEmployee(){
+        return 0;
+    }
 
     public String nameAndSurnameAndPatronimic() {
         return "Employee{" +
@@ -16,6 +32,7 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", patronimic='" + patronimic + '}';
     }
+
 
     @Override
     public String toString() {
