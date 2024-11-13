@@ -4,6 +4,7 @@ public class Employee {
     private String name;
     private String surname;
     private String patronimic;
+    private int count = 0;
 
     private double salary;
     private int department;
@@ -16,8 +17,7 @@ public class Employee {
         this.patronimic = patronimic;
         this.salary = salary;
         this.department = department;
-        this.id = id;
-        id++;
+        this.id = id++;
     }
     public String getName() {
         return name;
