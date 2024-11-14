@@ -1,69 +1,39 @@
 import java.util.Objects;
 
 public class Employee {
-    private String name;
-    private String surname;
-    private String patronimic;
+    private static final int minDepartmentNumber = 1;
+    private static final int maxDepartmentNumber = 5;
     private static int count = 0;
-
+    private final String firstName;
+    private final String lastName;
+    private final String secondName;
     private double salary;
     private int department;
-    private static int id;
-    public static int sumSalaryPerMonth(){
-        double sum = 0;
-        for (Employee employee : employee.) {
-            sum += employee.salary;
+    private final int id;
+
+    public Employee(String firstName, String lastName, String secondName, double salary, int department) {
+        if (department < minDepartmentNumber || department > maxDepartmentNumber) {
+            throw new IllegalArgumentException("Номер отдела должен быть от 1 до 5. Текущий номер: " + department);
+        } else {
+            this.department = department;
         }
-        return (int) sum;
-    }
-    public static int minSalaryEmployee(){
-        return 0;
-    }
-    public static int maxSalaryEmployee(){
-        return 0;
-    }
-    public static double averageSalaryEmployee(){
-        return 0;
-    }
-
-    public String nameAndSurnameAndPatronimic() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronimic='" + patronimic + '}';
-    }
-
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronimic='" + patronimic + '\'' +
-                ", count=" + count +
-                ", salary=" + salary +
-                ", department=" + department +
-                '}';
-    }
-
-    // Constructor
-    public Employee(String name, String surname, String patronimic,double salary, int department) {
-        this.name = name;
-        this.surname = surname;
-        this.patronimic = patronimic;
+        this.firstName =  firstName;
+        this.lastName = lastName;
+        this.secondName = secondName;
         this.salary = salary;
-        this.department = department;
-        this.id = id++;
-    }
-    public String getName() {
-        return name;
+        this.id = count++;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getFirstName() {
+        return firstName;
     }
-    public String getPatronimic() {
-        return patronimic;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getSecondName() {
+        return secondName;
     }
 
     public double getSalary() {
@@ -74,17 +44,58 @@ public class Employee {
         return department;
     }
 
-
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
     public void setDepartment(int department) {
         this.department = department;
     }
-    public void setSalary(double salary) {
-        this.salary = salary;
+
+    @Override
+    public String toString() {
+        if (secondName == null) {
+            return  "Имя: " + firstName + '\n' +
+                    "Фамилия: " + lastName + '\n' +
+                    "Зарплата: " + salary + "\n" +
+                    "Отдел: " + department + "\n" +
+                    "ID: " + id + "\n";
+        }
+        return  "Имя: " + firstName + '\n' +
+                "Фамилия: " + lastName + '\n' +
+                "Отчество: " + secondName + '\n' +
+                "Зарплата: " + salary + "\n" +
+                "Отдел: " + department + "\n" +
+                "ID: " + id + "\n";
+    }
+
+    public String printName() {
+        if (secondName == null) {
+            return "Имя: " + firstName + '\n' +
+                    "Фамилия: " + lastName + '\n';
+        }
+        return "Имя: " + firstName + '\n' +
+                "Фамилия: " + lastName + '\n' +
+                "Отчество: " + secondName + '\n';
+    }
+
+    public String printData() {
+        if (secondName == null) {
+            return "Имя: " + firstName + '\n' +
+                    "Фамилия: " + lastName + '\n' +
+                    "Зарплата: " + salary + "\n" +
+                    "ID: " + id + "\n";
+        }
+        return "Имя: " + firstName + '\n' +
+                "Фамилия: " + lastName + '\n' +
+                "Отчество: " + secondName + '\n' +
+                "Зарплата: " + salary + "\n" +
+                "ID: " + id + "\n";
+
     }
 
     @Override
@@ -92,11 +103,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Double.compare(salary, employee.salary) == 0 && department == employee.department && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(patronimic, employee.patronimic);
+        return Double.compare(salary, employee.salary) == 0 && department == employee.department && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(secondName, employee.secondName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, patronimic, salary, department);
+        return Objects.hash(firstName, lastName, secondName, salary, department);
     }
 }
