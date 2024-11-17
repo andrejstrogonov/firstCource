@@ -5,10 +5,12 @@ public class EmployeeBook {
 
     public boolean newEmployee(Employee employee) {
         for (int i = 0; i < employees.length; i++) {
-            employees[i] = employee;
-            employeeCount++;
-            return true;
+            if (employees[i] == null) {
+                employees[i] = employee;
+                employeeCount++;
+                return true;
             }
+        }
         return false;
     }
 
